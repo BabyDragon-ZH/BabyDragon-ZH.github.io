@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本生活計算機｜年収から手取りを計算</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans JP",
+        sans-serif;
+    background: #f5f7fa;
+    color: #333;
+}
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 18px 20px;
+}
+
+.header-inner {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.logo span {
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.result {
+    display: none;
+}
+
+.result-main {
+    background: #eff6ff;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.result-main .label {
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.result-main .amount {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.result-item {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.result-item .name {
+    color: #666;
+    font-size: 14px;
+}
+
+.result-item .value {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.note {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #777;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-main .amount {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            日本生活<span>計算機</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <h1>年収から手取りを計算</h1>
+
+    <p class="subtitle">
+        日本で働く場合の年収から、年間・月間の手取り額を簡易計算します。
+    </p>
+
+    <div class="card">
+
+        <h2>基本情報</h2>
+
+        <div class="form-group">
+            <label for="income">年収（万円）</label>
+            <input
+                type="number"
+                id="income"
+                placeholder="例：500"
+                min="0"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="age">年齢</label>
+            <input
+                type="number"
+                id="age"
+                placeholder="例：37"
+                min="18"
+                max="100"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="bonus">賞与（年収に含まれる場合は入力）</label>
+            <input
+                type="number"
+                id="bonus"
+                placeholder="例：100"
+                min="0"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="dependents">扶養人数</label>
+            <select id="dependents">
+                <option value="0">0人</option>
+                <option value="1">1人</option>
+                <option value="2">2人</option>
+                <option value="3">3人</option>
+                <option value="4">4人以上</option>
+            </select>
+        </div>
+
+        <button onclick="calculate()">
+            手取りを計算する
+        </button>
+
+    </div>
+
+    <div class="card result" id="result">
+
+        <h2>計算結果</h2>
+
+        <div class="result-main">
+            <div class="label">年間手取り（概算）</div>
+            <div class="amount" id="annualTakeHome">---</div>
+        </div>
+
+        <div class="result-grid">
+
+            <div class="result-item">
+                <div class="name">月間手取り</div>
+                <div class="value" id="monthlyTakeHome">---</div>
+            </div>
+
+            <div class="result-item">
+                <div class="name">社会保険料（概算）</div>
+                <div class="value" id="socialInsurance">---</div>
+            </div>
+
+            <div class="result-item">
+                <div class="name">所得税（概算）</div>
+                <div class="value" id="incomeTax">---</div>
+            </div>
+
+            <div class="result-item">
+                <div class="name">住民税（概算）</div>
+                <div class="value" id="residentTax">---</div>
+            </div>
+
+        </div>
+
+        <p class="note">
+            ※この計算結果は簡易シミュレーションです。
+            実際の手取り額は、加入している健康保険、
+            年齢、扶養状況、各種控除、居住地、賞与などによって異なります。
+        </p>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 日本生活計算機
+</footer>
+
+<script>
+
+function formatYen(value) {
+    return Math.round(value).toLocaleString("ja-JP") + " 円";
+}
+
+function calculate() {
+
+    const incomeMan = Number(document.getElementById("income").value);
+    const age = Number(document.getElementById("age").value);
+    const bonusMan = Number(document.getElementById("bonus").value) || 0;
+    const dependents =
+        Number(document.getElementById("dependents").value);
+
+    if (!incomeMan || incomeMan <= 0) {
+        alert("年収を入力してください。");
+        return;
+    }
+
+    const income = incomeMan * 10000;
+    const bonus = bonusMan * 10000;
+
+    // 社会保険料の簡易推計
+    let socialRate = 0.15;
+
+    if (age >= 40 && age < 65) {
+        socialRate += 0.01;
+    }
+
+    const socialInsurance = income * socialRate;
+
+    // 給与所得控除の簡易推計
+    let salaryDeduction;
+
+    if (income <= 1900000) {
+        salaryDeduction = 650000;
+    } else if (income <= 3600000) {
+        salaryDeduction = income * 0.30 + 80000;
+    } else if (income <= 6600000) {
+        salaryDeduction = income * 0.20 + 440000;
+    } else if (income <= 8500000) {
+        salaryDeduction = income * 0.10 + 1100000;
+    } else {
+        salaryDeduction = 1950000;
+    }
+
+    let taxableIncome =
+        income - salaryDeduction - socialInsurance;
+
+    // 基礎控除
+    taxableIncome -= 480000;
+
+    // 扶養控除の簡易反映
+    taxableIncome -= dependents * 380000;
+
+    if (taxableIncome < 0) {
+        taxableIncome = 0;
+    }
+
+    // 所得税の簡易税率
+    let incomeTax;
+
+    if (taxableIncome <= 1950000) {
+        incomeTax = taxableIncome * 0.05;
+    } else if (taxableIncome <= 3300000) {
+        incomeTax = taxableIncome * 0.10 - 97500;
+    } else if (taxableIncome <= 6950000) {
+        incomeTax = taxableIncome * 0.20 - 427500;
+    } else if (taxableIncome <= 9000000) {
+        incomeTax = taxableIncome * 0.23 - 636000;
+    } else {
+        incomeTax = taxableIncome * 0.33 - 1536000;
+    }
+
+    if (incomeTax < 0) {
+        incomeTax = 0;
+    }
+
+    // 住民税の簡易推計
+    let residentTax =
+        taxableIncome * 0.10 + 5000;
+
+    // 手取り
+    let takeHome =
+        income - socialInsurance - incomeTax - residentTax;
+
+    if (takeHome < 0) {
+        takeHome = 0;
+    }
+
+    const monthlyTakeHome = takeHome / 12;
+
+    document.getElementById("annualTakeHome").textContent =
+        formatYen(takeHome);
+
+    document.getElementById("monthlyTakeHome").textContent =
+        formatYen(monthlyTakeHome);
+
+    document.getElementById("socialInsurance").textContent =
+        formatYen(socialInsurance);
+
+    document.getElementById("incomeTax").textContent =
+        formatYen(incomeTax);
+
+    document.getElementById("residentTax").textContent =
+        formatYen(residentTax);
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
+
+</body>
+</html>
