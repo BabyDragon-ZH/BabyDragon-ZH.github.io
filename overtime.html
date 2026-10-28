@@ -28,14 +28,32 @@ main .card,main .panel,main section.panel,main #result,main #results{border:1px 
 .site-footer{margin-top:30px;background:#fff!important;border-top:1px solid #e1edf8!important;text-align:center!important;padding:27px 18px!important;color:#71859a!important;font-size:.87rem}.site-footer a{color:#437aaa!important;text-decoration:none}.site-footer a:hover{text-decoration:underline}.site-footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:10px}
 @media(max-width:720px){.site-top .site-top-inner{padding:10px 15px;justify-content:center}.site-nav-inner{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:8px 12px;-webkit-overflow-scrolling:touch}.site-nav a{font-size:.79rem;padding:8px 10px!important}.ui-hero{grid-template-columns:1fr;padding:20px 20px 4px;gap:0}.ui-hero h1{font-size:1.72rem!important}.ui-art{max-width:285px}.ui-links{grid-template-columns:1fr;gap:10px}.ui-link{padding:13px 15px}main{margin-top:16px!important;padding:0 13px!important}main .card,main .panel{padding:17px!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ui-link{transition:none}}
+</style><style>
+/* Shared A3 illustration system, scoped to prevent calculator style regressions */
+body{background:#edf7ff!important;color:#14366c}
+.site-header{position:relative!important;background:#fff!important;color:#12366d!important;border-bottom:1px solid #d7eafa!important;box-shadow:0 2px 15px #c9e1f144!important}
+.site-header .head-inner{max-width:1440px;margin:auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.site-header .brand{display:flex;align-items:center;gap:12px;color:#12366d!important;text-decoration:none!important;font-weight:700}
+.site-header .brand-mark{width:47px;height:47px;background:#268bf2;border-radius:12px;display:grid;place-items:center;color:white;font-size:26px;box-shadow:0 4px 0 #c0ddfa}
+.site-header .brand strong{display:block;font-size:20px;line-height:1.3}.site-header .brand small{display:block;color:#6680a4;font-size:11px;font-weight:400}
+.site-header .nav{display:flex;align-items:center;flex-wrap:wrap;gap:4px;background:transparent!important;border:0!important;padding:0!important}
+.site-header .nav a{display:inline-flex;align-items:center;gap:6px;padding:10px 12px;border-radius:12px;color:#174679!important;font-weight:700;font-size:13px;text-decoration:none!important}
+.site-header .nav a.active,.site-header .nav a:hover{background:#e7f3ff!important;color:#0879e8!important}
+.site-header .nav-icon{display:block;width:19px;height:19px;flex-shrink:0}
+main{max-width:1300px!important;margin:20px auto!important}
+main>.ui-hero.a3-banner{background:#e2f5ff var(--a3-banner) center center/cover no-repeat!important;min-height:260px!important;display:flex!important;align-items:center!important;padding:34px 43px!important;border-radius:22px!important;box-shadow:0 8px 26px #a3c9e733!important;border:1px solid #fff!important;position:relative!important;overflow:hidden!important;isolation:isolate}
+main>.ui-hero.a3-banner>div:first-child{width:53%!important;max-width:600px!important;position:relative!important;z-index:1!important}
+main>.ui-hero.a3-banner .ui-eyebrow{background:#fffffff0!important;color:#127be5!important;border:1px solid #c7e5ff!important;border-radius:99px!important;padding:7px 15px!important;display:inline-block!important;font-weight:700!important;font-size:13px!important}
+main>.ui-hero.a3-banner h1{color:#0c316b!important;font-size:clamp(26px,3.2vw,43px)!important;line-height:1.24!important;margin:15px 0!important}
+main>.ui-hero.a3-banner p{color:#184474!important;font-size:15px!important;line-height:1.8!important;max-width:560px!important}
+main>.ui-hero.a3-banner .ui-art{display:none!important}
+@media(max-width:760px){.site-header .head-inner{padding:12px 15px}.site-header .nav{width:100%;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap}.site-header .nav a{padding:8px}.site-header .brand strong{font-size:18px}main>.ui-hero.a3-banner{min-height:300px!important;align-items:flex-start!important;padding:22px!important;background-position:67% center!important}main>.ui-hero.a3-banner>div:first-child{width:88%!important}main>.ui-hero.a3-banner h1{font-size:28px!important}main>.ui-hero.a3-banner p{font-size:12px!important;max-width:76%!important}}
 </style></head>
 <body>
-<header class="site-top"><div class="site-top-inner"><a class="site-brand" href="./index.html"><span aria-hidden="true" class="brand-mark">▦</span><span>日本生活計算機<small class="brand-sub">暮らしの計算を、もっとシンプルに</small></span></a></div></header>
-<nav aria-label="サイトメニュー" class="site-nav"><div class="site-nav-inner"><a href="./index.html"><span aria-hidden="true" class="nav-emoji">◉</span>年収・手取り</a><a aria-current="page" href="./overtime.html"><span aria-hidden="true" class="nav-emoji">◷</span>残業代</a><a href="./hourly.html"><span aria-hidden="true" class="nav-emoji">◴</span>時給</a><a href="./mortgage.html"><span aria-hidden="true" class="nav-emoji">⌂</span>住宅ローン</a><a href="./car.html"><span aria-hidden="true" class="nav-emoji">▣</span>車の維持費</a><a href="./about.html"><span aria-hidden="true" class="nav-emoji">ⓘ</span>このサイトについて</a><a href="./contact.html"><span aria-hidden="true" class="nav-emoji">✉</span>お問い合わせ</a></div></nav>
-<main><section aria-label="ページの紹介" class="ui-hero"><div><span class="ui-eyebrow">無料・登録不要  |  日本生活計算機</span><h1>残業代計算機【2026年版】</h1><p class="intro muted">基礎時給と1か月の労働時間を入力すると、一般的な法定割増率による支給額の目安を計算します。結果は税金・社会保険料控除前です。</p></div><div class="ui-art"><svg aria-label="時計と働く人のイラスト" role="img" viewbox="0 0 390 230"><path d="M0 195q110-30 206 0t184-7v42H0Z" fill="#e5f4eb"></path><circle cx="171" cy="120" fill="#c2e4fb" r="89" stroke="#72b5e7" stroke-width="8"></circle><circle cx="171" cy="120" fill="white" r="71"></circle><path d="M171 67v53l34 20" fill="none" stroke="#417bb6" stroke-linecap="round" stroke-width="8"></path><g stroke="#8bb9df" stroke-width="4"><path d="M171 43v12M171 185v12M94 120h12M237 120h12"></path></g><circle cx="171" cy="120" fill="#417bb6" r="7"></circle><rect fill="#7db7e7" height="51" rx="8" width="76" x="275" y="130"></rect><path d="M291 130v-12q0-15 20-15t20 15v12" fill="none" stroke="#547da4" stroke-width="6"></path><path d="M278 155h70" stroke="#cce8fa" stroke-width="4"></path><circle cx="314" cy="75" fill="#ffd8bc" r="20"></circle><path d="M293 70q2-27 29-17l10 17" fill="#6b6870"></path></svg></div></section>
+<header class="site-header"><div class="head-inner"><a class="brand" href="./index.html"><span class="brand-mark">▦</span><span><strong>日本生活計算機</strong><small>暮らしの計算を、もっとシンプルに</small></span></a><nav aria-label="メインナビゲーション" class="nav"><a class="" href="./index.html"><img alt="" aria-hidden="true" class="nav-icon" src="./assets/nav-home.svg"/>ホーム</a><a class="" href="./salary.html"><img alt="" aria-hidden="true" class="nav-icon" src="./assets/nav-salary.svg"/>年収・手取り</a><a class="active" href="./overtime.html"><img alt="" aria-hidden="true" class="nav-icon" src="./assets/nav-overtime.svg"/>残業代</a><a class="" href="./hourly.html"><img alt="" aria-hidden="true" class="nav-icon" src="./assets/nav-hourly.svg"/>時給</a><a class="" href="./mortgage.html"><img alt="" aria-hidden="true" class="nav-icon" src="./assets/nav-mortgage.svg"/>住宅ローン</a><a class="" href="./car.html"><img alt="" aria-hidden="true" class="nav-icon" src="./assets/nav-car.svg"/>車の維持費</a></nav></div></header>
+
+<main><section aria-label="ページの紹介" class="ui-hero a3-banner" style="--a3-banner:url('./assets/banner-overtime.webp')"><div><span class="ui-eyebrow">無料・登録不要  |  日本生活計算機</span><h1>残業代計算機</h1><p class="intro muted">残業時間から残業代をかんたんに計算。 深夜・休日・月60時間超の割増賃金も確認できます。</p></div></section>
 <span class="pill">無料・登録不要</span>
-
-
 <div class="info small"><strong>対象：</strong>原則的な労働時間制度で、法定最低割増率を適用する概算です。フレックスタイム制・変形労働時間制・管理監督者等の特殊な取扱いは自動判定しません。</div>
 <form id="calcForm" novalidate="">
 <section aria-labelledby="h-base" class="panel"><h2 id="h-base">① 割増計算の基礎時給</h2>
@@ -87,7 +105,7 @@ main .card,main .panel,main section.panel,main #result,main #results{border:1px 
 <p>参考：<a href="https://www.mhlw.go.jp/" rel="noopener noreferrer" target="_blank">厚生労働省（公式サイト）</a>、<a href="https://elaws.e-gov.go.jp/document?lawid=322AC0000000049" rel="noopener noreferrer" target="_blank">労働基準法（e-Gov法令検索）</a>。実際の支給額は勤務先の就業規則・賃金規程・給与明細などをご確認ください。</p>
 <p class="small muted">入力した数値はこのページ内のJavaScriptで計算します。入力内容を当サイトのサーバーへ送信する仕組みはありません。</p>
 </section>
-<p><a href="./index.html">← 年収・手取り計算機へ戻る</a></p>
+<p><a href="./salary.html">← 年収・手取り計算機へ戻る</a></p>
 </main><footer class="site-footer"><div class="site-footer-links"><a href="./about.html">このサイトについて</a><a href="./privacy.html">プライバシーポリシー</a><a href="./contact.html">お問い合わせ</a></div><div>© 2026 日本生活計算機</div></footer>
 <div class="site-info-links" style="max-width:1050px;margin:22px auto 12px;padding:12px 16px;text-align:center;line-height:2;border-top:1px solid #dce5f0;font-size:14px"><a href="./about.html">このサイトについて</a> ｜ <a href="./privacy.html">プライバシーポリシー</a> ｜ <a href="./contact.html">お問い合わせ</a></div>
 <script>
