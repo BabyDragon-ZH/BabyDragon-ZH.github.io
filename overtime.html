@@ -1,44 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="残業代を無料で概算。法定時間外労働（月60時間以内・超過分）、深夜労働、法定休日労働、法定時間内の所定外労働を分けて計算。計算式と注意点も解説。">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://babydragon-zh.github.io/overtime.html">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="残業代を無料で概算。法定時間外労働（月60時間以内・超過分）、深夜労働、法定休日労働、法定時間内の所定外労働を分けて計算。計算式と注意点も解説。" name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="https://babydragon-zh.github.io/overtime.html" rel="canonical"/>
 <title>残業代計算機【無料・2026年版】深夜・休日・月60時間超にも対応 | 日本生活計算機</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:#172b47;background:#f3f6fb;font-size:16px}*{box-sizing:border-box}body{margin:0;line-height:1.65}a{color:#115fa8}a:hover{text-decoration-thickness:2px}header{background:#153e70;color:#fff}header .wrap{max-width:1000px;margin:auto;padding:15px 18px;font-weight:700}header a{color:#fff;text-decoration:none}nav{background:#e7eff9;border-bottom:1px solid #cedcec}nav .wrap{max-width:1000px;margin:auto;padding:10px 18px;display:flex;gap:20px;flex-wrap:wrap}nav a{font-weight:650}nav a[aria-current="page"]{color:#183a64;text-decoration:none}main{max-width:1000px;margin:30px auto;padding:0 16px}h1{font-size:clamp(1.55rem,3vw,2rem);line-height:1.35;margin:0 0 12px}h2{font-size:1.2rem;margin:0 0 15px}h3{font-size:1.05rem;margin:20px 0 8px}p{margin:9px 0 14px}.muted,.hint{color:#50637c}.intro{max-width:800px}.panel{background:#fff;border:1px solid #dce5f1;border-radius:14px;padding:24px;margin:20px 0;box-shadow:0 3px 15px #16385e0b}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field label{display:block;font-weight:700;margin-bottom:6px}.field input{display:block;width:100%;border:1px solid #91a9c5;border-radius:8px;padding:11px 12px;font:inherit;color:#172b47;background:#fff}.field input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #efaa28;outline-offset:2px}.hint{font-size:.84rem;margin:5px 0 0}.note{background:#fff7e7;border-left:4px solid #cf9224;border-radius:5px;padding:12px 15px}.info{background:#eef6ff;border-left:4px solid #3475c5;border-radius:5px;padding:12px 15px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}button{border:0;border-radius:9px;padding:12px 22px;font:inherit;font-weight:700;cursor:pointer;background:#1166b6;color:#fff}button.secondary{background:#e4edf7;color:#1a3c66}button:hover{filter:brightness(.94)}.error{color:#a91e19;font-weight:700;margin:14px 0 0}.error:empty{display:none}.total{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:800;color:#095aa8;margin:2px 0 14px}.result-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #e6edf5}.result-row span:last-child{text-align:right;font-weight:700;white-space:nowrap}.small{font-size:.87rem}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:500px}th,td{border-bottom:1px solid #e0e8f2;padding:10px;text-align:left;vertical-align:top}th{background:#f0f5fb}details{border-bottom:1px solid #e2e9f2;padding:13px 0}summary{cursor:pointer;font-weight:700}footer{text-align:center;color:#5b6c81;padding:24px 16px 40px}.pill{display:inline-block;font-size:.75rem;color:#28517d;background:#e6effa;border-radius:20px;padding:3px 10px;margin-bottom:10px}@media(max-width:650px){main{margin:20px auto}.panel{padding:17px}.grid{grid-template-columns:1fr}.result-row{font-size:.9rem}}
 </style>
-</head>
+<style>
+/* 2026 site-wide visual refresh: styles only, calculator JS untouched */
+:root{--ui-ink:#17365e;--ui-blue:#2787e8;--ui-border:#e0eaf5;--ui-sky:#edf7ff;--ui-shadow:0 10px 30px rgba(43,99,153,.075)}
+html{scroll-behavior:smooth}body{background:linear-gradient(180deg,#f0f8ff 0,#f8fbff 460px,#f8fbff 100%)!important;color:var(--ui-ink)!important;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif!important;line-height:1.65}*{box-sizing:border-box}
+.site-top{background:rgba(255,255,255,.97)!important;border-bottom:1px solid #e1edf8!important;padding:0!important;color:var(--ui-ink)!important;box-shadow:0 3px 16px rgba(33,98,158,.04)}
+.site-top .site-top-inner{max-width:1180px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.site-brand{display:flex;align-items:center;gap:10px;text-decoration:none!important;color:#17518c!important;font-size:1.18rem;font-weight:800;line-height:1.25}.brand-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:11px;background:linear-gradient(145deg,#4b9ded,#2175d6);color:white;font-size:23px;box-shadow:0 5px 12px #448bd42b}.brand-sub{display:block;font-size:.67rem;color:#7d91a9;font-weight:500;margin-top:2px}
+.site-nav{background:#fff!important;border-bottom:1px solid #e5edf6!important;padding:0!important;text-align:left!important}.site-nav-inner{max-width:1180px;margin:auto;padding:8px 18px;display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:center}.site-nav a{display:inline-flex;align-items:center;gap:5px;padding:9px 12px!important;border-radius:10px;color:#526d8b!important;text-decoration:none!important;font-size:.88rem;font-weight:700;white-space:nowrap}.site-nav a:hover,.site-nav a[aria-current="page"]{background:#eaf4ff;color:#1874d0!important}.nav-emoji{font-size:1.1rem;line-height:1}
+main{max-width:1120px!important;margin:24px auto 40px!important;padding:0 18px!important}
+.ui-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(245px,.8fr);align-items:center;gap:16px;background:linear-gradient(115deg,#f5fbff,#e8f5ff 70%,#e9f7f1);border:1px solid #dcecf8;border-radius:24px;padding:26px 32px 12px;margin:0 0 22px;box-shadow:var(--ui-shadow)}
+.ui-hero:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:#ffffff70;right:-65px;top:-130px}.ui-hero h1{font-size:clamp(1.65rem,3.3vw,2.55rem)!important;color:#143b70!important;letter-spacing:.01em;line-height:1.4;margin:7px 0 10px!important}.ui-hero p{font-size:.98rem!important;color:#55728f!important;line-height:1.85;margin:0 0 14px}.ui-eyebrow{display:inline-block;background:#fff;color:#3380c8;font-weight:750;font-size:.78rem;padding:5px 12px;border-radius:99px;box-shadow:0 3px 10px #438ac91c}.ui-art{width:100%;max-width:390px;justify-self:center;position:relative;z-index:1}.ui-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 10px #6da5cf14)}
+.ui-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 24px}.ui-link{display:flex;align-items:center;gap:15px;text-decoration:none!important;background:white;border:1px solid #e2ecf7;border-radius:17px;padding:16px 18px;box-shadow:var(--ui-shadow);color:#1c4775!important;transition:transform .18s,box-shadow .18s}.ui-link:hover{transform:translateY(-3px);box-shadow:0 14px 26px #4d87c01c}.ui-link .ui-link-icon{width:53px;height:53px;border-radius:15px;background:#eaf5ff;display:grid;place-items:center;font-size:1.9rem;flex-shrink:0}.ui-link strong{display:block;font-size:1.05rem}.ui-link small{display:block;color:#748ca4;font-size:.8rem;margin-top:3px}.ui-link .ui-arrow{margin-left:auto;color:#2787e8;font-size:1.4rem}
+.ui-section-label{margin:28px 0 13px;font-size:1.22rem;color:#204f81}.ui-divider{border:0;border-top:1px solid #e3edf8;margin:22px 0}
+main .card,main .panel,main section.panel,main #result,main #results{border:1px solid var(--ui-border)!important;border-radius:18px!important;box-shadow:var(--ui-shadow)!important;background:#fff!important}main .card,main .panel{padding:clamp(17px,2.8vw,26px)!important}main h2{color:#214e81!important}main input,main select,main textarea{border:1px solid #cbdced!important;border-radius:9px!important;max-width:100%}main input:focus,main select:focus{outline:2px solid #65a8ed!important;outline-offset:1px}main button,main button[type="submit"]{border-radius:11px!important;background:#2987e6!important;color:white!important;box-shadow:0 4px 10px #2d80cf20}main button.secondary,main button[type="reset"]{background:#e9f3fd!important;color:#205789!important}main .hero{background:#eef7ff!important;border-radius:14px!important}main .metric,main .total-box,main .highlight{border-radius:13px!important}main .pill{background:#e9f5ff!important;color:#2776bd!important}main .info,main .warning{border-radius:11px!important}
+.site-footer{margin-top:30px;background:#fff!important;border-top:1px solid #e1edf8!important;text-align:center!important;padding:27px 18px!important;color:#71859a!important;font-size:.87rem}.site-footer a{color:#437aaa!important;text-decoration:none}.site-footer a:hover{text-decoration:underline}.site-footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:10px}
+@media(max-width:720px){.site-top .site-top-inner{padding:10px 15px;justify-content:center}.site-nav-inner{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:8px 12px;-webkit-overflow-scrolling:touch}.site-nav a{font-size:.79rem;padding:8px 10px!important}.ui-hero{grid-template-columns:1fr;padding:20px 20px 4px;gap:0}.ui-hero h1{font-size:1.72rem!important}.ui-art{max-width:285px}.ui-links{grid-template-columns:1fr;gap:10px}.ui-link{padding:13px 15px}main{margin-top:16px!important;padding:0 13px!important}main .card,main .panel{padding:17px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ui-link{transition:none}}
+</style></head>
 <body>
-<header><div class="wrap"><a href="./">日本生活計算機</a></div></header>
-<nav aria-label="計算機メニュー"><div class="wrap"><a href="./index.html">年収・手取り計算機</a><a href="./overtime.html" aria-current="page">残業代計算機</a><a href="./hourly.html">時給計算機</a><a href="./mortgage.html">住宅ローン計算機</a></div></nav>
-<main>
+<header class="site-top"><div class="site-top-inner"><a class="site-brand" href="./index.html"><span aria-hidden="true" class="brand-mark">▦</span><span>日本生活計算機<small class="brand-sub">暮らしの計算を、もっとシンプルに</small></span></a></div></header>
+<nav aria-label="サイトメニュー" class="site-nav"><div class="site-nav-inner"><a href="./index.html"><span aria-hidden="true" class="nav-emoji">◉</span>年収・手取り</a><a aria-current="page" href="./overtime.html"><span aria-hidden="true" class="nav-emoji">◷</span>残業代</a><a href="./hourly.html"><span aria-hidden="true" class="nav-emoji">◴</span>時給</a><a href="./mortgage.html"><span aria-hidden="true" class="nav-emoji">⌂</span>住宅ローン</a><a href="./car.html"><span aria-hidden="true" class="nav-emoji">▣</span>車の維持費</a><a href="./about.html"><span aria-hidden="true" class="nav-emoji">ⓘ</span>このサイトについて</a><a href="./contact.html"><span aria-hidden="true" class="nav-emoji">✉</span>お問い合わせ</a></div></nav>
+<main><section aria-label="ページの紹介" class="ui-hero"><div><span class="ui-eyebrow">無料・登録不要  |  日本生活計算機</span><h1>残業代計算機【2026年版】</h1><p class="intro muted">基礎時給と1か月の労働時間を入力すると、一般的な法定割増率による支給額の目安を計算します。結果は税金・社会保険料控除前です。</p></div><div class="ui-art"><svg aria-label="時計と働く人のイラスト" role="img" viewbox="0 0 390 230"><path d="M0 195q110-30 206 0t184-7v42H0Z" fill="#e5f4eb"></path><circle cx="171" cy="120" fill="#c2e4fb" r="89" stroke="#72b5e7" stroke-width="8"></circle><circle cx="171" cy="120" fill="white" r="71"></circle><path d="M171 67v53l34 20" fill="none" stroke="#417bb6" stroke-linecap="round" stroke-width="8"></path><g stroke="#8bb9df" stroke-width="4"><path d="M171 43v12M171 185v12M94 120h12M237 120h12"></path></g><circle cx="171" cy="120" fill="#417bb6" r="7"></circle><rect fill="#7db7e7" height="51" rx="8" width="76" x="275" y="130"></rect><path d="M291 130v-12q0-15 20-15t20 15v12" fill="none" stroke="#547da4" stroke-width="6"></path><path d="M278 155h70" stroke="#cce8fa" stroke-width="4"></path><circle cx="314" cy="75" fill="#ffd8bc" r="20"></circle><path d="M293 70q2-27 29-17l10 17" fill="#6b6870"></path></svg></div></section>
 <span class="pill">無料・登録不要</span>
-<h1>残業代計算機【2026年版】</h1>
-<p class="intro muted">基礎時給と1か月の労働時間を入力すると、一般的な法定割増率による支給額の目安を計算します。結果は税金・社会保険料控除前です。</p>
+
+
 <div class="info small"><strong>対象：</strong>原則的な労働時間制度で、法定最低割増率を適用する概算です。フレックスタイム制・変形労働時間制・管理監督者等の特殊な取扱いは自動判定しません。</div>
-<form id="calcForm" novalidate>
-<section class="panel" aria-labelledby="h-base"><h2 id="h-base">① 割増計算の基礎時給</h2>
-<div class="grid"><div class="field"><label for="hourly">基礎時給（円）</label><input id="hourly" name="hourly" type="number" min="0.01" max="1000000" step="any" value="2000" inputmode="decimal" required><p class="hint">割増賃金の算定基礎となる1時間当たりの賃金。月給を単純に総労働時間で割るとは限りません。</p></div></div>
+<form id="calcForm" novalidate="">
+<section aria-labelledby="h-base" class="panel"><h2 id="h-base">① 割増計算の基礎時給</h2>
+<div class="grid"><div class="field"><label for="hourly">基礎時給（円）</label><input id="hourly" inputmode="decimal" max="1000000" min="0.01" name="hourly" required="" step="any" type="number" value="2000"/><p class="hint">割増賃金の算定基礎となる1時間当たりの賃金。月給を単純に総労働時間で割るとは限りません。</p></div></div>
 </section>
-<section class="panel" aria-labelledby="h-hours"><h2 id="h-hours">② 1か月の労働時間</h2>
+<section aria-labelledby="h-hours" class="panel"><h2 id="h-hours">② 1か月の労働時間</h2>
 <div class="grid">
-<div class="field"><label for="overtime">法定時間外労働の合計（時間）</label><input id="overtime" type="number" min="0" max="744" step="any" value="20" inputmode="decimal" required><p class="hint">原則1日8時間・週40時間を超える労働。法定休日労働は含めません。</p></div>
-<div class="field"><label for="otNight">うち深夜の法定時間外労働（時間）</label><input id="otNight" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">上の時間外労働のうち22:00〜翌5:00に働いた時間。</p></div>
-<div class="field"><label for="nightRegular">法定時間内の深夜労働（時間）</label><input id="nightRegular" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">通常賃金が別途支払われる前提で、深夜割増25%分のみを計算します。</p></div>
-<div class="field"><label for="holiday">法定休日労働（時間）</label><input id="holiday" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">法律上の法定休日の労働。会社の「所定休日」とは異なる場合があります。</p></div>
-<div class="field"><label for="holidayNight">うち深夜の法定休日労働（時間）</label><input id="holidayNight" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">法定休日労働のうち22:00〜翌5:00に働いた時間。</p></div>
-<div class="field"><label for="prescribed">法定時間内の所定外労働（時間）</label><input id="prescribed" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">所定労働時間を超えるが法定時間内の労働。ここでは通常賃金100%で概算（すでに支給済みなら0）。</p></div>
+<div class="field"><label for="overtime">法定時間外労働の合計（時間）</label><input id="overtime" inputmode="decimal" max="744" min="0" required="" step="any" type="number" value="20"/><p class="hint">原則1日8時間・週40時間を超える労働。法定休日労働は含めません。</p></div>
+<div class="field"><label for="otNight">うち深夜の法定時間外労働（時間）</label><input id="otNight" inputmode="decimal" max="744" min="0" required="" step="any" type="number" value="0"/><p class="hint">上の時間外労働のうち22:00〜翌5:00に働いた時間。</p></div>
+<div class="field"><label for="nightRegular">法定時間内の深夜労働（時間）</label><input id="nightRegular" inputmode="decimal" max="744" min="0" required="" step="any" type="number" value="0"/><p class="hint">通常賃金が別途支払われる前提で、深夜割増25%分のみを計算します。</p></div>
+<div class="field"><label for="holiday">法定休日労働（時間）</label><input id="holiday" inputmode="decimal" max="744" min="0" required="" step="any" type="number" value="0"/><p class="hint">法律上の法定休日の労働。会社の「所定休日」とは異なる場合があります。</p></div>
+<div class="field"><label for="holidayNight">うち深夜の法定休日労働（時間）</label><input id="holidayNight" inputmode="decimal" max="744" min="0" required="" step="any" type="number" value="0"/><p class="hint">法定休日労働のうち22:00〜翌5:00に働いた時間。</p></div>
+<div class="field"><label for="prescribed">法定時間内の所定外労働（時間）</label><input id="prescribed" inputmode="decimal" max="744" min="0" required="" step="any" type="number" value="0"/><p class="hint">所定労働時間を超えるが法定時間内の労働。ここでは通常賃金100%で概算（すでに支給済みなら0）。</p></div>
 </div>
 <div class="note small" style="margin-top:18px"><strong>月60時間超と深夜の重なり：</strong>時間外労働の深夜時間は、どの時間帯に発生したかによらず、時間外割増とは別に25%を加算します。月60時間超の時間外労働は、該当部分に50%の割増を適用します。</div>
-<div class="actions"><button type="submit">残業代を計算する</button><button class="secondary" type="button" id="reset">入力をリセット</button></div>
-<p id="error" class="error" role="alert" aria-live="assertive"></p>
+<div class="actions"><button type="submit">残業代を計算する</button><button class="secondary" id="reset" type="button">入力をリセット</button></div>
+<p aria-live="assertive" class="error" id="error" role="alert"></p>
 </section>
 </form>
-<section class="panel" aria-labelledby="h-result"><h2 id="h-result">③ 計算結果</h2><p class="muted small">入力条件に基づく追加支給額の概算（税・社会保険料控除前）</p>
-<div class="total" id="total" aria-live="polite">—</div>
+<section aria-labelledby="h-result" class="panel"><h2 id="h-result">③ 計算結果</h2><p class="muted small">入力条件に基づく追加支給額の概算（税・社会保険料控除前）</p>
+<div aria-live="polite" class="total" id="total">—</div>
 <div class="result-row"><span>法定時間外労働（60時間以内・125%）</span><span id="otBase">—</span></div>
 <div class="result-row"><span>法定時間外労働（60時間超・150%）</span><span id="otOver60">—</span></div>
 <div class="result-row"><span>法定時間外労働中の深夜割増（追加25%）</span><span id="otNightExtra">—</span></div>
@@ -66,11 +84,11 @@
 <details><summary>深夜の通常勤務はなぜ25%だけですか？</summary><p>通常勤務分の賃金100%は別途支払われていると仮定し、この計算機では追加の深夜割増25%分のみを計上するためです。</p></details>
 </section>
 <section class="panel"><h2>利用上の注意・参考情報</h2><p>このページは一般的な法定最低割増率を用いる簡易シミュレーターです。法定時間内の所定外労働の賃金支払状況、変形労働時間制、フレックスタイム制、裁量労働制、管理監督者の取扱い、固定残業代、割増賃金の算定基礎から除外できる手当、端数処理、代替休暇、会社独自の規程などは個別に確認が必要です。計算結果を未払賃金の確定額として使用しないでください。</p>
-<p>参考：<a href="https://www.mhlw.go.jp/" target="_blank" rel="noopener noreferrer">厚生労働省（公式サイト）</a>、<a href="https://elaws.e-gov.go.jp/document?lawid=322AC0000000049" target="_blank" rel="noopener noreferrer">労働基準法（e-Gov法令検索）</a>。実際の支給額は勤務先の就業規則・賃金規程・給与明細などをご確認ください。</p>
+<p>参考：<a href="https://www.mhlw.go.jp/" rel="noopener noreferrer" target="_blank">厚生労働省（公式サイト）</a>、<a href="https://elaws.e-gov.go.jp/document?lawid=322AC0000000049" rel="noopener noreferrer" target="_blank">労働基準法（e-Gov法令検索）</a>。実際の支給額は勤務先の就業規則・賃金規程・給与明細などをご確認ください。</p>
 <p class="small muted">入力した数値はこのページ内のJavaScriptで計算します。入力内容を当サイトのサーバーへ送信する仕組みはありません。</p>
 </section>
 <p><a href="./index.html">← 年収・手取り計算機へ戻る</a></p>
-</main><footer>© 日本生活計算機</footer>
+</main><footer class="site-footer"><div class="site-footer-links"><a href="./about.html">このサイトについて</a><a href="./privacy.html">プライバシーポリシー</a><a href="./contact.html">お問い合わせ</a></div><div>© 2026 日本生活計算機</div></footer>
 <div class="site-info-links" style="max-width:1050px;margin:22px auto 12px;padding:12px 16px;text-align:center;line-height:2;border-top:1px solid #dce5f0;font-size:14px"><a href="./about.html">このサイトについて</a> ｜ <a href="./privacy.html">プライバシーポリシー</a> ｜ <a href="./contact.html">お問い合わせ</a></div>
 <script>
 (function(){'use strict';
