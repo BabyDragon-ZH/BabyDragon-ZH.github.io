@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="【無料】時給・月給・年収を相互換算。週の勤務日数、1日の実働時間、年間休日、賞与を設定して、働き方に合わせた給与の目安を簡単計算。">
+<title>時給計算機【無料】月給・年収から時給換算／時給から月収・年収計算 | 日本生活計算機</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#182b45;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}header{background:#123f75;color:white;padding:20px 16px}header .wrap{max-width:940px;margin:auto}header a{color:white;text-decoration:none}nav{padding:12px 16px;text-align:center;background:#e8f0fa;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}a{color:#1266ba}main{max-width:940px;margin:28px auto;padding:0 16px}h1{font-size:1.8rem;margin:0 0 8px}h2{font-size:1.2rem;margin:0 0 16px}h3{font-size:1.04rem}p,li{line-height:1.7}.muted{color:#52657b;font-size:.92rem}.panel{background:#fff;border:1px solid #dce5f0;border-radius:14px;padding:24px;margin:0 0 20px;box-shadow:0 3px 14px #173b6810}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field label{display:block;font-weight:650;margin-bottom:7px}.field input,.field select{width:100%;padding:12px;border:1px solid #9fb1c7;border-radius:8px;font-size:1rem;background:white}.field input:focus,.field select:focus{outline:2px solid #2775cf;outline-offset:1px}.hint{font-size:.82rem;color:#52657b;margin:6px 0 0}.actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}button{background:#1266ba;color:white;border:0;border-radius:9px;padding:13px 22px;font-weight:700;font-size:1rem;cursor:pointer}button:hover{background:#0e4e91}.secondary{background:#e7eef7;color:#173b61}.secondary:hover{background:#d7e3f3}.total{font-size:2rem;font-weight:800;color:#075aaf;margin:8px 0}.result-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #e5ebf2;padding:12px 0}.result-row span:last-child{font-weight:700;text-align:right}.note{background:#fff8e9;border-left:4px solid #d69b24;padding:13px 16px;border-radius:6px}.error{color:#b42318;font-weight:650;margin-top:12px}.small{font-size:.85rem}footer{text-align:center;padding:20px;color:#5e6e80}.formula{background:#eef5ff;padding:12px 15px;border-radius:8px;line-height:1.8}details{border-top:1px solid #e5ebf2;padding:13px 0}summary{font-weight:700;cursor:pointer}#results[hidden]{display:none}@media(max-width:600px){.grid{grid-template-columns:1fr}.panel{padding:17px}.total{font-size:1.7rem}nav{gap:10px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./">日本生活計算機</a></div></header>
+<nav aria-label="計算機メニュー"><a href="./index.html">年収・手取り計算機</a><a href="./overtime.html">残業代計算機</a><a href="./hourly.html" aria-current="page">時給計算機</a></nav>
+<main>
+<h1>時給計算機</h1>
+<p class="muted">時給・月給・年収を相互換算できる無料シミュレーター。勤務日数や実働時間、賞与を設定して、税金・社会保険料控除前の給与を概算します。</p>
+<section class="panel">
+<h2>① 換算元の給与を入力</h2>
+<div class="grid">
+<div class="field"><label for="mode">計算の種類</label><select id="mode"><option value="hourly">時給から月給・年収を計算</option><option value="monthly">月給から時給・年収を計算</option><option value="annual">年収から時給・月給を計算</option></select></div>
+<div class="field"><label for="pay" id="payLabel">時給（円）</label><input id="pay" type="number" min="0" step="any" value="1500" inputmode="decimal"><p class="hint" id="payHint">税引前の時給を入力してください。</p></div>
+</div>
+</section>
+<section class="panel">
+<h2>② 勤務条件を設定</h2>
+<div class="grid">
+<div class="field"><label for="hours">1日の実働時間（時間）</label><input id="hours" type="number" min="0.1" max="24" step="any" value="8" inputmode="decimal"><p class="hint">休憩時間を除いた実働時間。</p></div>
+<div class="field"><label for="days">週の勤務日数（日）</label><input id="days" type="number" min="0.1" max="7" step="any" value="5" inputmode="decimal"><p class="hint">週あたりの平均勤務日数。</p></div>
+<div class="field"><label for="weeks">年間の勤務週数（週）</label><input id="weeks" type="number" min="0.1" max="52.18" step="any" value="52" inputmode="decimal"><p class="hint">長期休業や無給休暇を考慮して調整。52週なら毎週勤務する想定です。</p></div>
+<div class="field"><label for="bonus">年間賞与（円）</label><input id="bonus" type="number" min="0" step="any" value="0" inputmode="decimal"><p class="hint">月給・年収からの換算では、年収に含まれる賞与額を入力。時給からの換算では、年収に加える賞与額。</p></div>
+</div>
+<p class="hint">年間勤務時間 ＝ 1日の実働時間 × 週の勤務日数 × 年間の勤務週数。月平均勤務時間は年間勤務時間÷12です。年間の勤務週数は52.18週以下で設定してください。</p>
+<div class="actions"><button id="calculate" type="button">計算する</button><button id="reset" type="button" class="secondary">入力をリセット</button></div>
+<p id="error" class="error" role="alert" aria-live="polite"></p>
+</section>
+<section class="panel" id="results" aria-live="polite" hidden>
+<h2>③ 計算結果</h2>
+<p class="muted" id="resultDescription"></p>
+<div class="total" id="headline"></div>
+<div class="result-row"><span>換算時給（税引前）</span><span id="hourlyResult"></span></div>
+<div class="result-row"><span>月平均給与（税引前・賞与除く）</span><span id="monthlyResult"></span></div>
+<div class="result-row"><span>年収（税引前・賞与込み）</span><span id="annualResult"></span></div>
+<div class="result-row"><span>年間勤務時間</span><span id="annualHours"></span></div>
+<div class="result-row"><span>月平均勤務時間</span><span id="monthlyHours"></span></div>
+<div class="result-row"><span>年間賞与</span><span id="bonusResult"></span></div>
+<p class="small muted" id="explanation"></p>
+<p class="small muted">表示金額のみ1円単位で四捨五入。内部計算は丸めずに行います。</p>
+</section>
+<section class="panel">
+<h2>計算方法と使い方</h2>
+<p>入力した勤務条件から年間勤務時間を求め、給与を同じ労働時間ベースに換算します。</p>
+<div class="formula">年間勤務時間 ＝ 1日実働時間 × 週勤務日数 × 年間勤務週数<br>月平均勤務時間 ＝ 年間勤務時間 ÷ 12<br>時給換算 ＝ （年収 − 年間賞与）÷ 年間勤務時間<br>月平均給与（賞与除く）＝ 時給換算 × 月平均勤務時間<br>年収（賞与込み）＝ 時給換算 × 年間勤務時間 ＋ 年間賞与</div>
+<p class="small muted">月給を入力した場合は「月給×12＋賞与」を年収として換算します。年収を入力した場合は「（年収−賞与）÷12」を月平均給与として換算します。</p>
+<div class="note"><strong>ご注意：</strong>本ツールは勤務時間に基づく単純換算です。時給制の有給休暇、祝日・休日の扱い、月給制の有給休暇、固定残業代、時間外・深夜・休日割増、通勤手当、各種手当、税金・社会保険料などは自動計算しません。「時給換算」は残業代算定の法的な基礎時給と必ずしも一致しません。月給制で所定労働時間が決まっている場合は、実際の年間所定労働時間をもとに設定してください。</div>
+</section>
+<section class="panel">
+<h2>よくある質問（FAQ）</h2>
+<details><summary>月給から時給を計算する方法は？</summary><p>月給を12倍した金額を年間勤務時間で割ります。賞与を含む実質的な年収ベースの時給を知りたい場合は、年収に賞与を含めて入力するなど、目的に合わせて比較してください。</p></details>
+<details><summary>年収から時給を計算するとき、ボーナスはどう扱いますか？</summary><p>このツールでは賞与を通常の給与と分けます。年収と年間賞与を入力すると、賞与を除いた給与を勤務時間で割って時給換算します。賞与を含む年収全体の時間当たり金額を知りたい場合は、賞与欄を0円にして比較できます。</p></details>
+<details><summary>時給から月収を計算するには？</summary><p>時給に月平均勤務時間を掛けます。月平均勤務時間は、1日の実働時間×週の勤務日数×年間の勤務週数÷12で求めます。毎月の実際の勤務日数により給与は変動します。</p></details>
+<details><summary>手取り額や残業代も計算できますか？</summary><p>このページの金額は税引前の概算です。手取り額は<a href="./index.html">年収・手取り計算機</a>、割増賃金の概算は<a href="./overtime.html">残業代計算機</a>をご利用ください。</p></details>
+<details><summary>年間の勤務週数はどう設定すればいいですか？</summary><p>52週を基準に、無給の休業や勤務しない週を差し引いてください。祝日や有給休暇など、給与が支払われる日をどう扱うかは雇用形態と比較目的によって異なります。年間所定労働時間が分かる場合は、その時間に近くなるよう調整してください。</p></details>
+</section>
+<p><a href="./">← 日本生活計算機トップページに戻る</a></p>
+</main>
+<footer>© 日本生活計算機</footer>
+<script>
+(function(){
+'use strict';
+const el=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat('ja-JP',{style:'currency',currency:'JPY',maximumFractionDigits:0}).format(n);
+const num=n=>new Intl.NumberFormat('ja-JP',{maximumFractionDigits:2}).format(n);
+const defaults={mode:'hourly',pay:'1500',hours:'8',days:'5',weeks:'52',bonus:'0'};
+function updateLabels(){const mode=el('mode').value;const labels={hourly:['時給（円）','税引前の時給を入力してください。'],monthly:['月給（円・賞与除く）','税引前の月給を入力してください。'],annual:['年収（円・賞与込み）','税引前の年収総額を入力してください。']};el('payLabel').textContent=labels[mode][0];el('payHint').textContent=labels[mode][1];}
+function clear(){el('results').hidden=true;el('headline').textContent='';}
+function calculate(){
+ const mode=el('mode').value;const vals={};for(const id of ['pay','hours','days','weeks','bonus']){const raw=el(id).value.trim();if(raw===''){el('error').textContent='すべての項目を入力してください。';clear();return;}vals[id]=Number(raw);if(!Number.isFinite(vals[id])||vals[id]<0){el('error').textContent='0以上の有限な数値を入力してください。';clear();return;}}
+ const {pay,hours,days,weeks,bonus}=vals;
+ if(pay<=0||hours<=0||days<=0||weeks<=0||hours>24||days>7||weeks>52.18){el('error').textContent='給与・実働時間・勤務日数・勤務週数は正の値で入力し、1日24時間以下・週7日以下・年間52.18週以下にしてください。';clear();return;}
+ if(mode==='annual'&&bonus>pay){el('error').textContent='年間賞与は年収以下にしてください。';clear();return;}
+ const yearHours=hours*days*weeks,monthHours=yearHours/12;
+ let hourly,monthly,annual;
+ if(mode==='hourly'){hourly=pay;monthly=hourly*monthHours;annual=hourly*yearHours+bonus;}
+ else if(mode==='monthly'){monthly=pay;hourly=monthly/monthHours;annual=monthly*12+bonus;}
+ else{annual=pay;monthly=(annual-bonus)/12;hourly=(annual-bonus)/yearHours;}
+ if(![hourly,monthly,annual,yearHours,monthHours].every(Number.isFinite)||Math.max(hourly,monthly,annual)>1e15){el('error').textContent='計算結果が大きすぎます。入力値を確認してください。';clear();return;}
+ el('error').textContent='';el('results').hidden=false;
+ el('hourlyResult').textContent=money(hourly);el('monthlyResult').textContent=money(monthly);el('annualResult').textContent=money(annual);el('annualHours').textContent=num(yearHours)+' 時間';el('monthlyHours').textContent=num(monthHours)+' 時間';el('bonusResult').textContent=money(bonus);
+ const labels={hourly:['月平均給与（賞与除く）',monthly],monthly:['換算時給',hourly],annual:['換算時給',hourly]};el('resultDescription').textContent=labels[mode][0]+'の目安';el('headline').textContent=money(labels[mode][1]);
+ el('explanation').textContent='年間勤務時間 '+num(yearHours)+'時間、月平均 '+num(monthHours)+'時間を用いて計算しています。賞与は年収にのみ含めています。';
+}
+el('mode').addEventListener('change',()=>{updateLabels();clear();el('error').textContent='';});
+for(const id of ['pay','hours','days','weeks','bonus'])el(id).addEventListener('input',()=>{clear();el('error').textContent='';});
+el('calculate').addEventListener('click',calculate);
+el('reset').addEventListener('click',()=>{for(const [id,value] of Object.entries(defaults))el(id).value=value;updateLabels();calculate();});
+updateLabels();calculate();
+})();
+</script>
+</body>
+</html>
