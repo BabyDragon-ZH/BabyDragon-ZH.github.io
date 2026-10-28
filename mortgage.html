@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="【無料・登録不要】住宅ローンの毎月返済額・総返済額・利息・返済予定表をシミュレーション。元利均等・元金均等に対応。金利が上昇した場合の比較もできます。">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://babydragon-zh.github.io/mortgage.html">
+<title>住宅ローン計算機【無料】毎月返済額・総利息・金利比較 | 日本生活計算機</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:#172b47;background:#f3f6fb}*{box-sizing:border-box}body{margin:0;line-height:1.65}a{color:#135ca5}header{background:#173f70;color:white}header .wrap{max-width:1050px;margin:auto;padding:16px 18px;font-weight:750}header a{color:white;text-decoration:none}nav{background:#e7eff9;border-bottom:1px solid #ccd9e8}nav .wrap{max-width:1050px;margin:auto;padding:11px 18px;display:flex;flex-wrap:wrap;gap:12px 22px}nav a{font-weight:650}nav a[aria-current="page"]{color:#173f70;text-decoration:none}main{max-width:1050px;margin:28px auto;padding:0 16px}h1{font-size:clamp(1.5rem,3.5vw,2.1rem);margin:0 0 10px;line-height:1.4}h2{font-size:1.24rem;margin:0 0 14px}h3{font-size:1.06rem;margin:18px 0 8px}p{margin:8px 0 14px}.muted,.hint{color:#53677e}.small,.hint{font-size:.88rem}.pill{display:inline-block;background:#e6effa;color:#225080;border-radius:25px;padding:3px 12px;font-size:.8rem;margin-bottom:10px}.panel{background:white;border:1px solid #dce5f0;border-radius:14px;padding:24px;margin:20px 0;box-shadow:0 3px 15px #16385e0b}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field label{display:block;font-weight:700;margin-bottom:5px}.field input,.field select{display:block;width:100%;border:1px solid #95aac3;border-radius:8px;padding:11px 12px;font:inherit;background:white;color:inherit}.hint{margin:4px 0 0}.note{background:#fff7e7;border-left:4px solid #c78d26;padding:12px 15px;border-radius:5px}.info{background:#eff6ff;border-left:4px solid #3578bf;padding:12px 15px;border-radius:5px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}button{font:inherit;font-weight:700;border:0;border-radius:9px;background:#1267b4;color:white;padding:12px 22px;cursor:pointer}button.secondary{background:#e5eef8;color:#21466e}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #f0a629;outline-offset:2px}.error{color:#ae201c;font-weight:700}.error:empty{display:none}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{background:#eff5fd;border-radius:10px;padding:16px}.metric strong{display:block;font-size:clamp(1.2rem,3vw,1.7rem);color:#135aa1;overflow-wrap:anywhere}.metric .sub{display:block;font-size:.8rem;color:#53677e}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:540px}th,td{padding:10px;border-bottom:1px solid #e2e9f1;text-align:right;font-variant-numeric:tabular-nums}th:first-child,td:first-child{text-align:left}th{background:#eff5fb}details{border-bottom:1px solid #e1e8f1;padding:12px 0}summary{cursor:pointer;font-weight:700}footer{text-align:center;padding:25px;color:#60748a}#result[hidden]{display:none}#chart{display:block;width:100%;max-width:750px;height:auto;margin:12px auto}#chart text{font-size:13px;fill:#53677e}#chart .principal{fill:#347dc2}#chart .interest{fill:#f1ae4e}#chart .gridline{stroke:#e3eaf3;stroke-width:1}.legend{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}.legend i{display:inline-block;width:12px;height:12px;margin-right:5px;border-radius:2px}.nowrap{white-space:nowrap}@media(max-width:650px){main{margin:18px auto}.panel{padding:17px}.grid,.results{grid-template-columns:1fr}nav .wrap{gap:8px 15px}.metric strong{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./index.html">日本生活計算機</a></div></header>
+<nav aria-label="計算機メニュー"><div class="wrap"><a href="./index.html">年収・手取り計算機</a><a href="./overtime.html">残業代計算機</a><a href="./hourly.html">時給計算機</a><a href="./mortgage.html" aria-current="page">住宅ローン計算機</a></div></nav>
+<main>
+<span class="pill">無料・登録不要・入力内容の送信なし</span>
+<h1>住宅ローン計算機</h1>
+<p class="muted">借入額、金利、返済期間から、毎月の返済額・総利息・年ごとの返済予定を計算します。元利均等返済と元金均等返済を比較できます。</p>
+<div class="info small">この計算機は<strong>借入期間中ずっと同じ金利</strong>を適用する概算です。変動金利の将来の変化、5年ルール・125%ルール、住宅ローン控除、団体信用生命保険料などは自動計算しません。</div>
+<form id="loanForm" novalidate>
+<section class="panel"><h2>① 借入条件を入力</h2>
+<div class="grid">
+<div class="field"><label for="price">物件価格（万円）</label><input id="price" type="number" min="0" max="100000" step="any" value="4500" inputmode="decimal" required><p class="hint">土地・建物の購入価格。諸費用は含めません。</p></div>
+<div class="field"><label for="down">頭金（万円）</label><input id="down" type="number" min="0" max="100000" step="any" value="500" inputmode="decimal" required><p class="hint">物件価格から差し引く自己資金。</p></div>
+<div class="field"><label for="rate">年利（％）</label><input id="rate" type="number" min="0" max="30" step="any" value="1.0" inputmode="decimal" required><p class="hint">例：年1.0%なら「1.0」。固定金利として試算。</p></div>
+<div class="field"><label for="years">返済期間（年）</label><input id="years" type="number" min="1" max="50" step="1" value="35" inputmode="numeric" required><p class="hint">1〜50年、1年単位。</p></div>
+<div class="field"><label for="method">返済方式</label><select id="method"><option value="equal">元利均等返済（毎月の返済額がほぼ一定）</option><option value="principal">元金均等返済（毎月の返済額が徐々に減少）</option></select></div>
+<div class="field"><label for="cost">別途必要な諸費用（万円）</label><input id="cost" type="number" min="0" max="100000" step="any" value="200" inputmode="decimal" required><p class="hint">登記費用・仲介手数料等の概算。借入には含めず、自己資金の目安に加算します。</p></div>
+</div>
+<div class="actions"><button type="submit">返済額を計算する</button><button type="button" class="secondary" id="reset">初期値に戻す</button></div>
+<p id="error" class="error" role="alert" aria-live="assertive"></p>
+</section></form>
+<section id="result" class="panel" hidden aria-labelledby="resultTitle"><h2 id="resultTitle">② シミュレーション結果</h2>
+<div class="results"><div class="metric">借入金額<strong id="borrow">—</strong></div><div class="metric">毎月の返済額<strong id="payment">—</strong><span class="sub" id="paymentHint"></span></div><div class="metric">ローン総返済額<strong id="total">—</strong></div><div class="metric">支払利息の合計<strong id="interest">—</strong></div><div class="metric">頭金＋諸費用（自己資金）<strong id="cash">—</strong></div><div class="metric">総支出（頭金・諸費用込み）<strong id="overall">—</strong></div></div>
+<p class="small muted">各月の計算は小数を保持し、表示時に1円単位で四捨五入しています。実際の金融機関の端数処理・返済日によって差が生じます。</p>
+<h3>返済内訳の推移</h3><svg id="chart" viewBox="0 0 750 270" role="img" aria-label="年ごとの元金返済と利息の積み上げ棒グラフ"></svg><div class="legend small"><span><i style="background:#347dc2"></i>元金返済</span><span><i style="background:#f1ae4e"></i>利息</span></div>
+<h3>年ごとの返済予定表</h3><div class="table-wrap"><table><thead><tr><th>年</th><th>年間返済額</th><th>うち元金</th><th>うち利息</th><th>年末残高</th></tr></thead><tbody id="schedule"></tbody></table></div>
+<h3>金利が変わった場合の比較</h3><p class="small muted">借入開始時から全期間にわたって比較金利が適用された場合の試算です。返済途中で金利が上がる場合の予測ではありません。</p>
+<div class="table-wrap"><table><thead><tr><th>年利</th><th>初月返済額</th><th>総利息</th><th>総返済額</th></tr></thead><tbody id="comparison"></tbody></table></div>
+</section>
+<section class="panel"><h2>計算方法と前提</h2>
+<p><strong>借入金額</strong>＝物件価格−頭金。諸費用はローンに組み込まず、自己資金として扱います。返済回数は「返済期間×12」、月利は「年利÷12」とします。ボーナス返済、繰上返済、手数料の借入、金利変更は扱いません。</p>
+<p><strong>元利均等返済：</strong>毎月返済額＝借入金額×月利÷(1−(1＋月利)<sup>−返済回数</sup>)。年利0%の場合は借入金額÷返済回数。月々の元金と利息の内訳は変わりますが、返済額は原則一定です。</p>
+<p><strong>元金均等返済：</strong>毎月の元金返済額＝借入金額÷返済回数。各月の利息＝返済直前の残高×月利。返済額は当初が高く、残高の減少に伴って低くなります。</p>
+<div class="note small"><strong>注意：</strong>実際の住宅ローンには金融機関の審査、保証料、事務手数料、団信、火災保険、固定資産税などが関係します。変動金利は将来の返済額が変わる可能性があります。購入可能額や契約条件を保証するものではありません。</div>
+</section>
+<section class="panel"><h2>よくある質問</h2>
+<details><summary>元利均等と元金均等はどちらが有利ですか？</summary><p>同じ借入金額・金利・期間なら、一般に元金均等返済は初期の返済額が高い一方、元金の減りが早いため総利息が少なくなります。毎月の負担の安定性を重視する場合は元利均等返済が選ばれやすい方式です。</p></details>
+<details><summary>変動金利のローンも計算できますか？</summary><p>現在入力した金利が返済終了まで続くと仮定した概算は可能です。ただし、実際の変動金利の見直しや返済額変更のルールは金融機関によって異なるため、将来の返済額を予測するものではありません。</p></details>
+<details><summary>住宅ローン控除は反映されていますか？</summary><p>いいえ。住宅ローン控除は入居年、住宅の性能、所得、借入限度額などに左右されるため、この計算には含めていません。</p></details>
+<details><summary>諸費用をローンに含めたい場合は？</summary><p>この計算機では諸費用を借入に含めません。諸費用も借りる条件を試したい場合は、借入希望総額に合わせて物件価格を調整し、諸費用欄は0にして試算できます。ただし、その場合は「物件価格」「自己資金」の表示が実際の内訳と異なります。</p></details>
+</section>
+<p><a href="./index.html">← 年収・手取り計算機へ戻る</a></p>
+</main><footer>© 2026 日本生活計算機</footer>
+<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+const yen=n=>Math.round(n).toLocaleString('ja-JP')+' 円';
+const fields=['price','down','rate','years','cost'];
+function calculateLoan(principal,annualRate,years,method){
+ const n=years*12,r=annualRate/1200;
+ if(principal===0)return {first:0,last:0,total:0,interest:0,annual:Array.from({length:years},(_,i)=>({year:i+1,paid:0,principal:0,interest:0,balance:0}))};
+ const monthly=method==='equal'?(r===0?principal/n:principal*r/(-Math.expm1(-n*Math.log1p(r)))):null;
+ const principalPart=principal/n;
+ let balance=principal,total=0,interest=0,first=0,last=0;
+ const annual=[];
+ for(let m=1;m<=n;m++){
+  const i=balance*r;
+  let p=method==='equal'?monthly-i:principalPart;
+  p=Math.min(balance,Math.max(0,p));
+  const paid=p+i;
+  if(m===1)first=paid;
+  if(m===n)last=paid;
+  balance=Math.max(0,balance-p);
+  total+=paid;interest+=i;
+  const idx=Math.floor((m-1)/12);
+  if(!annual[idx])annual[idx]={year:idx+1,paid:0,principal:0,interest:0,balance:0};
+  annual[idx].paid+=paid;annual[idx].principal+=p;annual[idx].interest+=i;annual[idx].balance=balance;
+ }
+ return {first,last,total,interest,annual};
+}
+function readInputs(){const v={};for(const id of fields){const raw=$(id).value.trim();const n=Number(raw);if(raw===''||!Number.isFinite(n)||n<0||n>100000)throw Error('数値を正しく入力してください。');v[id]=n;}
+ if(v.price<=0)throw Error('物件価格は0万円より大きくしてください。');
+ if(v.down>v.price)throw Error('頭金は物件価格以下にしてください。');
+ if(v.rate>30)throw Error('年利は0〜30%で入力してください。');
+ if(!Number.isInteger(v.years)||v.years<1||v.years>50)throw Error('返済期間は1〜50年の整数で入力してください。');
+ v.method=$('method').value;return v;}
+function drawChart(annual){const svg=$('chart');svg.replaceChildren();const ns='http://www.w3.org/2000/svg';const add=(tag,attrs,text)=>{const el=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));if(text!==undefined)el.textContent=text;svg.appendChild(el);return el;};
+ const max=Math.max(1,...annual.map(a=>a.paid));const left=55,right=15,top=12,bottom=35,w=750-left-right,h=270-top-bottom;
+ for(let k=0;k<=4;k++){const y=top+h-h*k/4;add('line',{x1:left,y1:y,x2:750-right,y2:y,class:'gridline'});add('text',{x:left-6,y:y+4,'text-anchor':'end'},Math.round(max*k/4/10000)+'万');}
+ const barW=w/annual.length;
+ for(let i=0;i<annual.length;i++){const a=annual[i],x=left+i*barW+barW*.1,bw=Math.max(1,barW*.8);const hp=a.principal/max*h,hi=a.interest/max*h;add('rect',{x,y:top+h-hp,width:bw,height:hp,class:'principal'});add('rect',{x,y:top+h-hp-hi,width:bw,height:hi,class:'interest'});if(i===0||i===annual.length-1||(i+1)%5===0)add('text',{x:x+bw/2,y:top+h+18,'text-anchor':'middle'},a.year+'年');}
+}
+function show(){try{const v=readInputs();const principal=(v.price-v.down)*10000;const result=calculateLoan(principal,v.rate,v.years,v.method);
+ $('borrow').textContent=yen(principal);$('payment').textContent=yen(result.first);$('paymentHint').textContent=v.method==='principal'?'元金均等：初月の金額（最終月 '+yen(result.last)+'）':'元利均等：毎月ほぼ一定';
+ $('total').textContent=yen(result.total);$('interest').textContent=yen(result.interest);$('cash').textContent=yen((v.down+v.cost)*10000);$('overall').textContent=yen(result.total+(v.down+v.cost)*10000);
+ const tbody=$('schedule');tbody.replaceChildren();for(const a of result.annual){const tr=document.createElement('tr');for(const val of [a.year+'年目',yen(a.paid),yen(a.principal),yen(a.interest),yen(a.balance)]){const td=document.createElement('td');td.textContent=val;tr.appendChild(td);}tbody.appendChild(tr);}
+ drawChart(result.annual);
+ const compare=$('comparison');compare.replaceChildren();const rates=[v.rate,v.rate+.5,v.rate+1].filter(r=>r<=30);for(const r of rates){const z=calculateLoan(principal,r,v.years,v.method);const tr=document.createElement('tr');for(const val of [r.toFixed(2)+'%',yen(z.first),yen(z.interest),yen(z.total)]){const td=document.createElement('td');td.textContent=val;tr.appendChild(td);}compare.appendChild(tr);}
+ $('error').textContent='';$('result').hidden=false;return true;
+ }catch(e){$('error').textContent=e.message;$('result').hidden=true;return false;}}
+ $('loanForm').addEventListener('submit',e=>{e.preventDefault();if(show())$('result').scrollIntoView({behavior:'smooth',block:'start'});});
+ for(const id of [...fields,'method'])$(id).addEventListener('input',()=>{$('result').hidden=true;$('error').textContent='入力内容が変更されました。「返済額を計算する」を押してください。';});
+ $('reset').addEventListener('click',()=>{$('price').value=4500;$('down').value=500;$('rate').value=1;$('years').value=35;$('cost').value=200;$('method').value='equal';show();});
+ // Numerical regression checks: zero interest, amortization balance, equal principal and increasing rates.
+ const t0=calculateLoan(1200000,0,10,'equal');
+ const t1=calculateLoan(30000000,1,35,'equal');
+ const t2=calculateLoan(30000000,1,35,'principal');
+ const t3=calculateLoan(30000000,2,35,'equal');
+ console.assert(Math.abs(t0.first-10000)<.001&&Math.abs(t0.interest)<.001,'zero-interest');
+ console.assert(Math.abs(t1.annual.at(-1).balance)<.01&&Math.abs(t1.total-30000000-t1.interest)<.01,'amortization');
+ console.assert(t2.first>t2.last&&t2.interest<t1.interest,'equal-principal');
+ console.assert(t3.first>t1.first&&t3.interest>t1.interest,'rate-increase');
+ show();
+})();
+</script>
+</body>
+</html>
