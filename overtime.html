@@ -2,84 +2,91 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="【2026年版・無料】残業代を簡単シミュレーション。時給と残業時間を入力するだけで、時間外労働・深夜残業・休日出勤・月60時間超の割増賃金を計算できます。">
-<title>残業代計算機【2026年版・無料】深夜・休日・月60時間超の割増賃金 | 日本生活計算機</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="残業代を無料で概算。法定時間外労働（月60時間以内・超過分）、深夜労働、法定休日労働、法定時間内の所定外労働を分けて計算。計算式と注意点も解説。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://babydragon-zh.github.io/overtime.html">
+<title>残業代計算機【無料・2026年版】深夜・休日・月60時間超にも対応 | 日本生活計算機</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#182b45;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}header{background:#123f75;color:#fff;padding:20px 16px}header .wrap{max-width:900px;margin:auto}header a{color:#fff;text-decoration:none}main{max-width:900px;margin:28px auto;padding:0 16px}h1{font-size:1.7rem;margin:0 0 8px}h2{font-size:1.2rem;margin:0 0 16px}p{line-height:1.7}.muted{color:#52657b;font-size:.92rem}.panel{background:white;border:1px solid #dce5f0;border-radius:14px;padding:22px;margin-bottom:20px;box-shadow:0 3px 14px #173b6810}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label{display:block;font-weight:650;font-size:.94rem;margin-bottom:7px}input{width:100%;padding:12px;border:1px solid #9fb1c7;border-radius:8px;font-size:1rem}input:focus{outline:2px solid #2775cf;outline-offset:1px}.hint{font-size:.82rem;color:#52657b;margin:6px 0 0}button{background:#1266ba;color:white;border:0;border-radius:9px;padding:13px 22px;font-weight:700;font-size:1rem;cursor:pointer}button:hover{background:#0e4e91}.actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}.secondary{background:#e7eef7;color:#173b61}.secondary:hover{background:#d7e3f3}.total{font-size:2rem;font-weight:800;color:#075aaf;margin:4px 0 10px}.result-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #e5ebf2;padding:12px 0}.result-row span:last-child{font-weight:700;text-align:right}.note{background:#fff8e9;border-left:4px solid #d69b24;padding:13px 16px;border-radius:6px}.error{color:#b42318;font-weight:650;margin-top:12px}.small{font-size:.85rem}footer{text-align:center;padding:20px;color:#5e6e80}a{color:#1266ba}@media(max-width:600px){.grid{grid-template-columns:1fr}.panel{padding:17px}.total{font-size:1.7rem}}
+:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:#172b47;background:#f3f6fb;font-size:16px}*{box-sizing:border-box}body{margin:0;line-height:1.65}a{color:#115fa8}a:hover{text-decoration-thickness:2px}header{background:#153e70;color:#fff}header .wrap{max-width:1000px;margin:auto;padding:15px 18px;font-weight:700}header a{color:#fff;text-decoration:none}nav{background:#e7eff9;border-bottom:1px solid #cedcec}nav .wrap{max-width:1000px;margin:auto;padding:10px 18px;display:flex;gap:20px;flex-wrap:wrap}nav a{font-weight:650}nav a[aria-current="page"]{color:#183a64;text-decoration:none}main{max-width:1000px;margin:30px auto;padding:0 16px}h1{font-size:clamp(1.55rem,3vw,2rem);line-height:1.35;margin:0 0 12px}h2{font-size:1.2rem;margin:0 0 15px}h3{font-size:1.05rem;margin:20px 0 8px}p{margin:9px 0 14px}.muted,.hint{color:#50637c}.intro{max-width:800px}.panel{background:#fff;border:1px solid #dce5f1;border-radius:14px;padding:24px;margin:20px 0;box-shadow:0 3px 15px #16385e0b}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field label{display:block;font-weight:700;margin-bottom:6px}.field input{display:block;width:100%;border:1px solid #91a9c5;border-radius:8px;padding:11px 12px;font:inherit;color:#172b47;background:#fff}.field input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #efaa28;outline-offset:2px}.hint{font-size:.84rem;margin:5px 0 0}.note{background:#fff7e7;border-left:4px solid #cf9224;border-radius:5px;padding:12px 15px}.info{background:#eef6ff;border-left:4px solid #3475c5;border-radius:5px;padding:12px 15px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}button{border:0;border-radius:9px;padding:12px 22px;font:inherit;font-weight:700;cursor:pointer;background:#1166b6;color:#fff}button.secondary{background:#e4edf7;color:#1a3c66}button:hover{filter:brightness(.94)}.error{color:#a91e19;font-weight:700;margin:14px 0 0}.error:empty{display:none}.total{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:800;color:#095aa8;margin:2px 0 14px}.result-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #e6edf5}.result-row span:last-child{text-align:right;font-weight:700;white-space:nowrap}.small{font-size:.87rem}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:500px}th,td{border-bottom:1px solid #e0e8f2;padding:10px;text-align:left;vertical-align:top}th{background:#f0f5fb}details{border-bottom:1px solid #e2e9f2;padding:13px 0}summary{cursor:pointer;font-weight:700}footer{text-align:center;color:#5b6c81;padding:24px 16px 40px}.pill{display:inline-block;font-size:.75rem;color:#28517d;background:#e6effa;border-radius:20px;padding:3px 10px;margin-bottom:10px}@media(max-width:650px){main{margin:20px auto}.panel{padding:17px}.grid{grid-template-columns:1fr}.result-row{font-size:.9rem}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a href="./">日本生活計算機</a>
-  </div>
-</header>
-<nav style="padding:12px;text-align:center;background:#e8f0fa">
-  <a href="./index.html">年収・手取り計算機</a>
-  <span style="margin:0 12px">｜</span>
-  <a href="./overtime.html">残業代計算機</a>
-</nav>
+<header><div class="wrap"><a href="./">日本生活計算機</a></div></header>
+<nav aria-label="計算機メニュー"><div class="wrap"><a href="./index.html">年収・手取り計算機</a><a href="./overtime.html" aria-current="page">残業代計算機</a></div></nav>
 <main>
-<h1>残業代計算機</h1>
-<p class="muted">日本の法定割増率に基づき、1か月の残業代を概算します。金額は税・社会保険料控除前です。</p>
-<section class="panel">
-<h2>① 基礎となる時給</h2>
-<div class="grid">
-<div><label for="hourly">割増計算の基礎時給（円）</label><input id="hourly" type="number" min="0" step="1" value="2000" inputmode="decimal"><p class="hint">月給制の場合、割増賃金の算定基礎額を所定月間労働時間などで割った金額を入力してください。</p></div>
-</div>
+<span class="pill">無料・登録不要</span>
+<h1>残業代計算機【2026年版】</h1>
+<p class="intro muted">基礎時給と1か月の労働時間を入力すると、一般的な法定割増率による支給額の目安を計算します。結果は税金・社会保険料控除前です。</p>
+<div class="info small"><strong>対象：</strong>原則的な労働時間制度で、法定最低割増率を適用する概算です。フレックスタイム制・変形労働時間制・管理監督者等の特殊な取扱いは自動判定しません。</div>
+<form id="calcForm" novalidate>
+<section class="panel" aria-labelledby="h-base"><h2 id="h-base">① 割増計算の基礎時給</h2>
+<div class="grid"><div class="field"><label for="hourly">基礎時給（円）</label><input id="hourly" name="hourly" type="number" min="0.01" max="1000000" step="any" value="2000" inputmode="decimal" required><p class="hint">割増賃金の算定基礎となる1時間当たりの賃金。月給を単純に総労働時間で割るとは限りません。</p></div></div>
 </section>
-<section class="panel">
-<h2>② 1か月の勤務時間</h2>
+<section class="panel" aria-labelledby="h-hours"><h2 id="h-hours">② 1か月の労働時間</h2>
 <div class="grid">
-<div><label for="overtime">法定時間外労働（合計・時間）</label><input id="overtime" type="number" min="0" step="0.5" value="20" inputmode="decimal"><p class="hint">原則として1日8時間・週40時間を超える労働。法定休日労働は含めません。</p></div>
-<div><label for="otNight">うち深夜の法定時間外労働（時間）</label><input id="otNight" type="number" min="0" step="0.5" value="0" inputmode="decimal"><p class="hint">上の法定時間外労働に含まれる22:00〜5:00の時間。</p></div>
-<div><label for="nightRegular">法定時間内の深夜労働（時間）</label><input id="nightRegular" type="number" min="0" step="0.5" value="0" inputmode="decimal"><p class="hint">法定時間外・法定休日ではない深夜労働。ここでは深夜割増25%分のみを加算します。</p></div>
-<div><label for="holiday">法定休日労働（時間）</label><input id="holiday" type="number" min="0" step="0.5" value="0" inputmode="decimal"><p class="hint">法律上の「法定休日」の労働時間。所定休日と混同しないでください。</p></div>
-<div><label for="holidayNight">うち深夜の法定休日労働（時間）</label><input id="holidayNight" type="number" min="0" step="0.5" value="0" inputmode="decimal"><p class="hint">上の法定休日労働に含まれる22:00〜5:00の時間。</p></div>
+<div class="field"><label for="overtime">法定時間外労働の合計（時間）</label><input id="overtime" type="number" min="0" max="744" step="any" value="20" inputmode="decimal" required><p class="hint">原則1日8時間・週40時間を超える労働。法定休日労働は含めません。</p></div>
+<div class="field"><label for="otNight">うち深夜の法定時間外労働（時間）</label><input id="otNight" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">上の時間外労働のうち22:00〜翌5:00に働いた時間。</p></div>
+<div class="field"><label for="nightRegular">法定時間内の深夜労働（時間）</label><input id="nightRegular" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">通常賃金が別途支払われる前提で、深夜割増25%分のみを計算します。</p></div>
+<div class="field"><label for="holiday">法定休日労働（時間）</label><input id="holiday" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">法律上の法定休日の労働。会社の「所定休日」とは異なる場合があります。</p></div>
+<div class="field"><label for="holidayNight">うち深夜の法定休日労働（時間）</label><input id="holidayNight" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">法定休日労働のうち22:00〜翌5:00に働いた時間。</p></div>
+<div class="field"><label for="prescribed">法定時間内の所定外労働（時間）</label><input id="prescribed" type="number" min="0" max="744" step="any" value="0" inputmode="decimal" required><p class="hint">所定労働時間を超えるが法定時間内の労働。ここでは通常賃金100%で概算（すでに支給済みなら0）。</p></div>
 </div>
-<div class="actions"><button id="calculate" type="button">残業代を計算する</button><button id="reset" type="button" class="secondary">入力をリセット</button></div>
-<div id="error" class="error" role="alert" aria-live="polite"></div>
+<div class="note small" style="margin-top:18px"><strong>月60時間超と深夜の重なり：</strong>時間外労働の深夜時間は、どの時間帯に発生したかによらず、時間外割増とは別に25%を加算します。月60時間超の時間外労働は、該当部分に50%の割増を適用します。</div>
+<div class="actions"><button type="submit">残業代を計算する</button><button class="secondary" type="button" id="reset">入力をリセット</button></div>
+<p id="error" class="error" role="alert" aria-live="assertive"></p>
 </section>
-<section class="panel" id="results" aria-live="polite">
-<h2>③ 計算結果</h2>
-<p class="muted">この入力条件における追加支給額の目安</p>
-<div class="total" id="total">—</div>
-<div class="result-row"><span>法定時間外労働（60時間以内：125%）</span><span id="otBase">—</span></div>
-<div class="result-row"><span>法定時間外労働（60時間超：150%）</span><span id="otOver60">—</span></div>
+</form>
+<section class="panel" aria-labelledby="h-result"><h2 id="h-result">③ 計算結果</h2><p class="muted small">入力条件に基づく追加支給額の概算（税・社会保険料控除前）</p>
+<div class="total" id="total" aria-live="polite">—</div>
+<div class="result-row"><span>法定時間外労働（60時間以内・125%）</span><span id="otBase">—</span></div>
+<div class="result-row"><span>法定時間外労働（60時間超・150%）</span><span id="otOver60">—</span></div>
 <div class="result-row"><span>法定時間外労働中の深夜割増（追加25%）</span><span id="otNightExtra">—</span></div>
 <div class="result-row"><span>法定時間内の深夜割増（25%分のみ）</span><span id="nightExtra">—</span></div>
 <div class="result-row"><span>法定休日労働（135%）</span><span id="holidayBase">—</span></div>
 <div class="result-row"><span>法定休日労働中の深夜割増（追加25%）</span><span id="holidayNightExtra">—</span></div>
-<p class="small muted">計算途中では丸めず、表示金額のみ円単位で四捨五入しています。実際の端数処理・給与計算とは異なる場合があります。</p>
+<div class="result-row"><span>法定時間内の所定外労働（100%）</span><span id="prescribedBase">—</span></div>
+<p class="small muted">各項目の計算途中では丸めず、表示時のみ1円単位で四捨五入します。表示内訳の合計と総額に1円程度の差が出る場合があります。実際の給与計算の端数処理とは異なる場合があります。</p>
 </section>
-<section class="panel">
-<h2>計算の前提・注意事項</h2>
-<p>法定時間外労働は原則25%以上、月60時間を超える部分は50%以上、深夜労働は25%以上、法定休日労働は35%以上の割増が必要です。深夜と時間外・法定休日が重なる場合、深夜割増を追加します。</p>
-<div class="note"><strong>ご注意：</strong>このツールは一般的な法定割増率による概算です。月60時間超の代替休暇制度、変形労働時間制、フレックスタイム制、管理監督者等の適用関係、企業独自の高い割増率、固定残業代、未払賃金の精算、法定時間内の所定外労働の通常賃金などは自動判定しません。特に「法定時間内の深夜労働」は追加の深夜割増部分のみ計算します。</div>
-<p class="small">参考：<a href="https://www.mhlw.go.jp/" target="_blank" rel="noopener noreferrer">厚生労働省</a>。個別の給与計算は就業規則・労働契約・給与明細をご確認ください。</p>
+<section class="panel"><h2>割増率と計算方法</h2><div class="table-wrap"><table><thead><tr><th>区分</th><th>この計算機で使う倍率</th><th>計算上の扱い</th></tr></thead><tbody>
+<tr><td>法定時間外（月60時間以内）</td><td>125%</td><td>基礎時給 × 時間 × 1.25</td></tr>
+<tr><td>法定時間外（月60時間超の部分）</td><td>150%</td><td>基礎時給 × 時間 × 1.50</td></tr>
+<tr><td>深夜（22:00〜翌5:00）</td><td>追加25%</td><td>時間外・法定休日に重なる場合も追加</td></tr>
+<tr><td>法定休日</td><td>135%</td><td>基礎時給 × 時間 × 1.35</td></tr>
+<tr><td>法定時間内の所定外</td><td>100%（仮定）</td><td>通常賃金が未払いの場合の概算</td></tr>
+</tbody></table></div>
+<p class="small">例：基礎時給2,000円、法定時間外労働20時間（深夜なし）の場合、2,000 × 20 × 1.25 ＝ <strong>50,000円</strong>。月70時間なら60時間分150,000円＋超過10時間分30,000円＝<strong>180,000円</strong>。</p>
+<div class="note small"><strong>重要：</strong>法定休日労働は月60時間の法定時間外労働には算入しません。法定休日の深夜労働は135%＋25%＝160%が基本です。会社の割増率が法定最低を上回る場合、この計算機はその上乗せ分を反映しません。</div>
 </section>
-<p><a href="./">← 年収・手取り計算機（トップページ）に戻る</a></p>
-</main>
-<footer>© 日本生活計算機</footer>
+<section class="panel"><h2>よくある質問</h2>
+<details><summary>残業代の基礎時給はどう求めますか？</summary><p>月給制の場合、割増賃金の算定基礎に含まれる賃金を、所定労働時間に基づく1か月平均所定労働時間などで除して求めます。すべての手当が一律に算定基礎から除外されるわけではありません。給与規程を確認してください。</p></details>
+<details><summary>月60時間を超えた場合はどうなりますか？</summary><p>法定時間外労働の月60時間超の部分について、原則50%以上の割増が必要です。深夜労働が重なれば、さらに25%以上の深夜割増が加わります。代替休暇制度などの例外的な取扱いはこの計算機では扱いません。</p></details>
+<details><summary>休日出勤はすべて135%ですか？</summary><p>いいえ。135%の対象は法律上の「法定休日」の労働です。法定休日以外の所定休日の出勤は、法定時間外労働に当たるかどうかなどで扱いが変わります。</p></details>
+<details><summary>計算結果は手取り額ですか？</summary><p>いいえ。税金・社会保険料を差し引く前の概算です。既に基本給に含まれている賃金や固定残業代との精算も自動判定しません。</p></details>
+<details><summary>深夜の通常勤務はなぜ25%だけですか？</summary><p>通常勤務分の賃金100%は別途支払われていると仮定し、この計算機では追加の深夜割増25%分のみを計上するためです。</p></details>
+</section>
+<section class="panel"><h2>利用上の注意・参考情報</h2><p>このページは一般的な法定最低割増率を用いる簡易シミュレーターです。法定時間内の所定外労働の賃金支払状況、変形労働時間制、フレックスタイム制、裁量労働制、管理監督者の取扱い、固定残業代、割増賃金の算定基礎から除外できる手当、端数処理、代替休暇、会社独自の規程などは個別に確認が必要です。計算結果を未払賃金の確定額として使用しないでください。</p>
+<p>参考：<a href="https://www.mhlw.go.jp/" target="_blank" rel="noopener noreferrer">厚生労働省（公式サイト）</a>、<a href="https://elaws.e-gov.go.jp/document?lawid=322AC0000000049" target="_blank" rel="noopener noreferrer">労働基準法（e-Gov法令検索）</a>。実際の支給額は勤務先の就業規則・賃金規程・給与明細などをご確認ください。</p>
+<p class="small muted">入力した数値はこのページ内のJavaScriptで計算します。入力内容を当サイトのサーバーへ送信する仕組みはありません。</p>
+</section>
+<p><a href="./index.html">← 年収・手取り計算機へ戻る</a></p>
+</main><footer>© 日本生活計算機</footer>
 <script>
-(function(){
-'use strict';
-const ids=['hourly','overtime','otNight','nightRegular','holiday','holidayNight'];
+(function(){'use strict';
+const ids=['hourly','overtime','otNight','nightRegular','holiday','holidayNight','prescribed'];
+const outputIds=['total','otBase','otOver60','otNightExtra','nightExtra','holidayBase','holidayNightExtra','prescribedBase'];
+const $=id=>document.getElementById(id);
 const yen=n=>new Intl.NumberFormat('ja-JP',{style:'currency',currency:'JPY',maximumFractionDigits:0}).format(n);
-const set=(id,value)=>{document.getElementById(id).textContent=yen(value)};
-function calculate(){
- const v={};for(const id of ids){const raw=document.getElementById(id).value;if(raw.trim()===''){document.getElementById('error').textContent='すべての項目を入力してください。';return;}v[id]=Number(raw);if(!Number.isFinite(v[id])||v[id]<0){document.getElementById('error').textContent='0以上の数値を入力してください。';return;}}
- if(v.otNight>v.overtime||v.holidayNight>v.holiday){document.getElementById('error').textContent='「うち深夜」の時間は、それぞれの合計時間以下にしてください。';return;}
- document.getElementById('error').textContent='';
- const h=v.hourly, first=Math.min(v.overtime,60), over=Math.max(v.overtime-60,0);
- const amounts={otBase:h*first*1.25,otOver60:h*over*1.5,otNightExtra:h*v.otNight*.25,nightExtra:h*v.nightRegular*.25,holidayBase:h*v.holiday*1.35,holidayNightExtra:h*v.holidayNight*.25};
- let total=0;for(const [id,n] of Object.entries(amounts)){set(id,n);total+=n;}set('total',total);
-}
-document.getElementById('calculate').addEventListener('click',calculate);
-document.getElementById('reset').addEventListener('click',()=>{const defaults={hourly:2000,overtime:20,otNight:0,nightRegular:0,holiday:0,holidayNight:0};for(const [id,n] of Object.entries(defaults))document.getElementById(id).value=n;calculate();});
+function clear(){for(const id of outputIds)$(id).textContent='—';}
+function compute(v){const h=v.hourly;const first=Math.min(v.overtime,60);const over=Math.max(v.overtime-60,0);const amounts={otBase:h*first*1.25,otOver60:h*over*1.5,otNightExtra:h*v.otNight*.25,nightExtra:h*v.nightRegular*.25,holidayBase:h*v.holiday*1.35,holidayNightExtra:h*v.holidayNight*.25,prescribedBase:h*v.prescribed};return {amounts,total:Object.values(amounts).reduce((a,b)=>a+b,0)};}
+function calculate(){const v={};for(const id of ids){const raw=$(id).value.trim();const n=Number(raw);if(raw===''||!Number.isFinite(n)||n<0||(id==='hourly'&&n<=0)||(id==='hourly'&&n>1000000)||(id!=='hourly'&&n>744)){clear();$('error').textContent='入力値を確認してください。基礎時給は0円より大きく100万円以下、各時間は0〜744時間で入力してください。';return false;}v[id]=n;}
+if(v.otNight>v.overtime||v.holidayNight>v.holiday){clear();$('error').textContent='「うち深夜」の時間は、それぞれの合計時間以下にしてください。';return false;}
+if(v.overtime+v.nightRegular+v.holiday+v.prescribed>744){clear();$('error').textContent='労働時間の合計が1か月の最大744時間を超えています。入力を確認してください。';return false;}
+$('error').textContent='';const result=compute(v);for(const [id,n] of Object.entries(result.amounts))$(id).textContent=yen(n);$('total').textContent=yen(result.total);return true;}
+$('calcForm').addEventListener('submit',e=>{e.preventDefault();calculate();});
+for(const id of ids)$(id).addEventListener('input',()=>{clear();$('error').textContent='入力を変更しました。「残業代を計算する」を押して結果を更新してください。';});
+$('reset').addEventListener('click',()=>{const defaults={hourly:2000,overtime:20,otNight:0,nightRegular:0,holiday:0,holidayNight:0,prescribed:0};for(const [id,n] of Object.entries(defaults))$(id).value=n;calculate();});
 calculate();
 })();
 </script>
-</body>
-</html>
+</body></html>
