@@ -135,7 +135,7 @@ function calculate(){
  el('error').textContent='';el('results').hidden=false;
  el('hourlyResult').textContent=money(hourly);el('monthlyResult').textContent=money(monthly);el('annualResult').textContent=money(annual);el('annualHours').textContent=num(yearHours)+' 時間';el('monthlyHours').textContent=num(monthHours)+' 時間';el('bonusResult').textContent=money(bonus);
  const labels={hourly:['月平均給与（賞与除く）',monthly],monthly:['換算時給',hourly],annual:['換算時給',hourly]};el('resultDescription').textContent=labels[mode][0]+'の目安';el('headline').textContent=money(labels[mode][1]);
- el('explanation').textContent='年間勤務時間 '+num(yearHours)+'時間、月平均 '+num(monthHours)+'時間を用いて計算しています。賞与は年収にのみ含めています。';
+ el('explanation').textContent='年間勤務時間 '+num(yearHours)+'時間、月平均 '+num(monthHours)+'時間を用いて計算しています。換算時給と月平均給与は賞与を含まない税引前の概算です。年収には賞与を含めます。';
 }
 el('mode').addEventListener('change',()=>{updateLabels();clear();el('error').textContent='';});
 for(const id of ['pay','hours','days','weeks','bonus'])el(id).addEventListener('input',()=>{clear();el('error').textContent='';});
